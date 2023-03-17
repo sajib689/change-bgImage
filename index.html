@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change</title>
+</head>
+<body>
+    <div class="container">
+        <button type="submit" id="btn">Background</button>
+        <div class="clock">
+            <div class="clock-face">
+                <div class="hand clock-hour">00</div>
+                <div class="hand clock-minute">:00</div>
+                <div class="hand clock-second">:00</div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .clock-face {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            font-size: 30px;
+        }
+        .hand {
+            padding: 10px;
+        }
+        #btn {
+            padding: 10px 20px;
+            background: #222;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            color: #fff;
+        }
+        #btn:hover {
+            background: #000;
+            transform: scale(1.1);
+            transition: all 0.5s ease-in-out;
+        }
+    </style>
+    <script>
+        const box = document.querySelector('.container');
+        const button = document.getElementById('btn');
+        const hand = document.querySelectorAll('.hand');
+        button.addEventListener('click', () => {
+            box.style.backgroundImage = 'url(download.jfif)';
+            hand.style.color = 'white';
+        });
+        const seconds = document.querySelector('.clock-second');
+        const minutes = document.querySelector('.clock-minute');
+        const hours = document.querySelector('.clock-hour');
+        function setDate () {
+            const now = new Date();
+            const second = now.getSeconds();
+            const minute = now.getMinutes();
+            const hour = now.getHours();
+            seconds.innerHTML = second;
+            minutes.innerHTML = minute;
+            hours.innerHTML = hour;
+        }
+        setInterval ( setDate, 1000)
+    </script>
+</body>
+</html>
